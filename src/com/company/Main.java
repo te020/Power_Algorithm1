@@ -3,37 +3,31 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-    static String scann () {
+    static String  scanLine() {
         Scanner scan = new Scanner(System.in);
-           return scan.nextLine();
+        return scan.nextLine();
     }
-
+    static long power(int base, int exp){
+        long pow = 1;
+        if (exp == 0) return 1;
+        else
+            for(int i =  0; i < exp; ++i){
+                pow *= base;
+            }
+        return pow;
+    }
     public static void main(String[] args) {
         int a, b;
-        long pow = 1;
         System.out.println("Algorithm for calculating the power");
         System.out.println("Write the base:" );
-        a = Integer.parseInt(scann());
+        a = Integer.parseInt(scanLine());
         System.out.println("Write the exponent:" );
-        b = Integer.parseInt(scann());
-
-        if (b == 0){
-            System.out.println( a + " raised to the power of " + b + " is 1");
-        }
-        else if (b > 0){
-            for (int i = 1; i <= b; i++){
-                pow *= a;
-            }
-            System.out.println( a + " raised to the power of " + b + " is " + pow );
-        }
-
-        else{
+        b = Integer.parseInt(scanLine());
+        if (b < 0) {
             b = -b;
-            for (int i = 1; i <= b; i++){
-                pow *= a;
-            }
-            System.out.println( a + " raised to the power of " + b + " is 1/" + pow );
+            System.out.println( a + " raised to the power of " + b + " is 1/" + power(a,b));
         }
+        else
+            System.out.println(a + " raised to the power of " + b + " is " + power(a,b));
     }
 }
-
